@@ -7,7 +7,7 @@ export const CountryList = ({data})=>{
                 <li key={flags.png}>
 
 <img src={flags.png} alt={flags.alt} />
-                    <p>{name.common}</p>
+                    <h2>{name.common}</h2>
                     <p>Population: {population}</p>
                     <p>Region: {region}</p>
                     <p>Capital: {capital}</p>

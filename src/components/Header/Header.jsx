@@ -1,10 +1,14 @@
-// import scss from './Header.scss'
-
+import scss from './Header.module.scss';
+import { ReactComponent as Theme } from '../../images/icons/theme.svg';
 export const Header = () => {
-return(
-    <header>
-<p>Where in the world?</p>
-<p>Dark Mode</p>
-</header>
-)
-}
+  return (
+    <header className={scss.header}>
+      <h1 className={scss.title}>Where in the world?</h1>
+      <div className={scss['theme-container']}>
+        {' '}
+        <Theme className={scss['theme-icon']}/>
+        <p className={scss.theme}>Dark Mode</p>
+      </div>
+    </header>
+  );
+};
