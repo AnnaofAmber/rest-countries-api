@@ -1,3 +1,4 @@
+import Home from "pages/Home/Home";
 import { Header } from "./Header/Header";
 import { SearchBar } from "./SearchBar/SearchBar";
 
@@ -7,6 +8,7 @@ export const App = () => {
     <div>
 <Header/>
 <SearchBar/>
+<Home/>
     </div>
   );
 };
