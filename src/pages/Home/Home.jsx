@@ -26,11 +26,12 @@ useEffect(()=>{
     }
     finally {
         setIsLoading(false);
+        console.log(isLoading);
       }
 }
 fetchCountries()
 
-}, [ apiError, countries])
+}, [ apiError, countries, isLoading])
 
     return(
         <div>
