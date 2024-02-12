@@ -1,0 +1,44 @@
+.list{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 40px;
+}
+
+.item{
+
+}
+
+.flag{
+    display: block;
+    width: 267px;
+    height: 160px;
+}
+.info-container{
+    padding: 24px 0px 46px 24px;
+    background: rgb(255, 255, 255);
+}
+.name{
+font-size: 18px;
+font-weight: 800;
+line-height: 26px;
+letter-spacing: 0px;
+margin-bottom: 16px;
+}
+.info{
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+}
+
+.details{
+
+    font-size: 14px;
+    font-weight: 200;
+    line-height: 16px;
+}
+
+.info:not(:last-child){
+    margin-bottom: 8px;
+}
