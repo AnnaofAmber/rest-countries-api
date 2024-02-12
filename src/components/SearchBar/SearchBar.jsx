@@ -1,4 +1,4 @@
-import scss from './SearchBar.scss'
+// import scss from './SearchBar.scss'
 
 export const SearchBar = () => {
     return(
