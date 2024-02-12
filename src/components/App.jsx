@@ -1,6 +1,5 @@
 import Home from "pages/Home/Home";
 import { Header } from "./Header/Header";
-import { SearchBar } from "./SearchBar/SearchBar";
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
