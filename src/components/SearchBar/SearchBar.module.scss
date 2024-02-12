@@ -1,0 +1,20 @@
+.form{
+display: flex;
+align-items: center;
+padding-top: 14px;
+padding-bottom: 14px;
+padding-left: 34px;
+width: 100%;
+border-radius: 5px;
+box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
+background: rgb(255, 255, 255);
+
+}
+.btn-search{
+border: none;
+background-color: transparent;
+margin-right: 26px;
+}
+.input{
+    border: none;
+}

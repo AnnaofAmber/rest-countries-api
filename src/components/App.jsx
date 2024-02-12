@@ -9,7 +9,6 @@ export const App = () => {
   return (
     <div>
 <Header/>
-<SearchBar/>
 <Suspense>
 <Routes>
   <Route path="/" element={<Home/>}/>

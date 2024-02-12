@@ -1,5 +1,7 @@
+import scss from './Home.module.scss'
 import { fetchAllCountries } from "api/countries-api"
 import { CountryList } from "components/CountryList/CountryList";
+import { SearchBar } from 'components/SearchBar/SearchBar';
 import Notiflix from "notiflix";
 import { useEffect, useState } from "react"
 
@@ -26,7 +28,7 @@ useEffect(()=>{
     }
     finally {
         setIsLoading(false);
-        console.log(isLoading);
+
       }
 }
 fetchCountries()
@@ -34,7 +36,8 @@ fetchCountries()
 }, [ apiError, countries, isLoading])
 
     return(
-        <div>
+        <div className={scss.container}>
+            <SearchBar/>
             <CountryList data = {countries}/>
         </div>
     )

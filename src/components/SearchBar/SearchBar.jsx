@@ -1,11 +1,11 @@
-// import scss from './SearchBar.scss'
-
+import scss from './SearchBar.module.scss'
+import {ReactComponent as Search} from '../../images/icons/search.svg'
 export const SearchBar = () => {
     return(
-       <form >
-        <label htmlFor=""></label>
-        <button></button>
-        <input id='country-name' name='searchCountryName' type="text" placeholder='Search for a country...' />
+       <form className={scss.form}>
+        <label htmlFor="country-name"></label>
+        <button className={scss['btn-search']}><Search/></button>
+        <input className={scss.input} id='country-name' name='searchCountryName' type="text" placeholder='Search for a country...' />
        </form>
     )
 }
