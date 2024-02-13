@@ -1,9 +1,13 @@
 import scss from './Home.module.scss'
-import { fetchAllCountries } from "api/countries-api"
+// import { fetchAllCountries } from "api/countries-api"
+
 import { CountryList } from "components/CountryList/CountryList";
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import Notiflix from "notiflix";
 import { useEffect, useState } from "react"
+// import { useSelector } from 'react-redux';
+// import { getCountries } from '../../redux/selectors';
+import { fetchAllCountries } from '../../redux/operations';
 
 const Home = () => {
 const [countries, setCountries] = useState([])
@@ -34,7 +38,8 @@ useEffect(()=>{
 fetchCountries()
 
 }, [ apiError, countries, isLoading])
-
+// const countries = useSelector(getCountries)
+// console.log(countries);
     return(
         <div className={scss.container}>
             <SearchBar/>
