@@ -23,3 +23,12 @@ ul{
 h1,h2,h3{
   margin: 0;
 }
+
+.page-container{
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}

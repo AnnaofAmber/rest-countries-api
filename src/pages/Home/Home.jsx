@@ -61,14 +61,18 @@ catch (error) {
             {isLoading && <Loader/>}
             <SearchBar/>
              <CountryList data={currentItems}/>
-            <ReactPaginate 
+<div >
+<ReactPaginate 
         breakLabel="..."
         nextLabel="next >"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={3}
         pageCount={pageCount}
         previousLabel="< previous"
-        renderOnZeroPageCount={null}/>
+        renderOnZeroPageCount={null}
+        className='page-container'
+        />
+</div>
         </div>
     )
 }
