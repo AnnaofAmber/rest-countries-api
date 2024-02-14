@@ -1,1 +1,1 @@
-// export const getCountries = state => state.countries.items
+export const getCountries = state => state.countries.items

@@ -5,14 +5,18 @@ import { CountryList } from "components/CountryList/CountryList";
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import Notiflix from "notiflix";
 import { useEffect, useState } from "react"
-// import { useSelector } from 'react-redux';
-// import { getCountries } from '../../redux/selectors';
+import { getCountries } from '../../redux/selectors';
 import { fetchAllCountries } from '../../redux/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCountries } from '../../redux/countriesSlice';
 
 const Home = () => {
-const [countries, setCountries] = useState([])
+
 const [isLoading, setIsLoading] = useState(false);
 const [apiError, setApiError] = useState(false);
+
+const dispatch = useDispatch()
+const countries = useSelector(getCountries)
 
 
 useEffect(()=>{
@@ -21,7 +25,7 @@ useEffect(()=>{
         setIsLoading(true);
         const response = await fetchAllCountries()
         if(countries.length === 0){
-            setCountries(response)
+            dispatch(setCountries(response))
         }
     }
     catch(error){
