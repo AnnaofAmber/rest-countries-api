@@ -1,17 +1,16 @@
 import scss from './Home.module.scss'
-// import { fetchAllCountries } from "api/countries-api"
-
 import { CountryList } from "components/CountryList/CountryList";
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import Notiflix from "notiflix";
 import { useEffect, useState } from "react"
 import { getCountries } from '../../redux/selectors';
-import { fetchAllCountries } from '../../redux/operations';
+import { fetchAllCountries, fetchCountriesByRegion } from '../../api/country-api';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCountries } from '../../redux/countriesSlice';
 import { setPagination } from '../../redux/paginationSlice';
 import ReactPaginate from 'react-paginate';
 import { Loader } from 'components/Loader/Loader';
+import { FilterBar } from 'components/FilterBar/FilterBar';
 
 const Home = () => {
 
@@ -60,6 +59,7 @@ catch (error) {
         <div className={scss.container}>
             {isLoading && <Loader/>}
             <SearchBar/>
+            <FilterBar/>
              <CountryList data={currentItems}/>
 <div >
 <ReactPaginate 
