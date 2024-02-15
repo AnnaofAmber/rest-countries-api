@@ -1,14 +1,16 @@
 import scss from './FilterBar.module.scss'
 import { useDispatch } from 'react-redux';
 import { setFilterByRegion } from '../../redux/filterRegionSlice';
+import { setCountries } from '../../redux/countriesSlice';
 
 
 export const FilterBar = () =>{
     const dispatch = useDispatch()
-
     const handleChange = (event) => {
         dispatch(setFilterByRegion(event.target.value))
+        dispatch(setCountries([]))
     };
+
 
  return(
     <div className={scss['filter-container']}>

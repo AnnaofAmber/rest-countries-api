@@ -3,8 +3,8 @@ import { CountryList } from "components/CountryList/CountryList";
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import Notiflix from "notiflix";
 import { useEffect, useState } from "react"
-import { getCountries } from '../../redux/selectors';
-import { fetchAllCountries, fetchCountriesByRegion } from '../../api/country-api';
+import { getCountries, getFilterByRegion } from '../../redux/selectors';
+import { fetchAllCountries, fetchCountriesByRegion} from '../../api/country-api';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCountries } from '../../redux/countriesSlice';
 import { setPagination } from '../../redux/paginationSlice';
@@ -19,7 +19,7 @@ const [apiError, setApiError] = useState(false);
 
 const dispatch = useDispatch()
 const countries = useSelector(getCountries)
-
+const region = useSelector(getFilterByRegion)
 
 // pagination
 const [itemOffset, setItemOffset] = useState(0);
@@ -34,25 +34,47 @@ const handlePageClick = (event) => {
   };
 
 useEffect(()=>{
-    const fetchCountries = async() =>{
-try{
-    const response = await fetchAllCountries()
-    if(countries.length === 0){
-        dispatch(setCountries(response))
+if(region === null){
+  const fetchCountries = async() =>{
+    try{
+        const response = await fetchAllCountries()
+        if(countries.length === 0){
+            dispatch(setCountries(response))
+        }
     }
+    catch (error) {
+        setApiError(true);
+        Notiflix.Notify.failure(
+          `Oops! Something went wrong! Error ${apiError} Try reloading the page!`
+        );
+      } finally {
+        setIsLoading(false);
+      }
+    
+        }
+        fetchCountries()
+    
 }
-catch (error) {
-    setApiError(true);
-    Notiflix.Notify.failure(
-      `Oops! Something went wrong! Error ${apiError} Try reloading the page!`
-    );
-  } finally {
-    setIsLoading(false);
-  }
+else if(region !== null && countries.length === 0){
+  const fetchByRegion = async()=>{
+    try{
+        const response = await fetchCountriesByRegion(region)
+            dispatch(setCountries(response))
 
     }
-    fetchCountries()
+    catch (error) {
+        setApiError(true);
+        Notiflix.Notify.failure(
+          `Oops! Something went wrong! Error ${apiError} Try reloading the page!`
+        );
+      } finally {
+        setIsLoading(false);
+      }
+  }
+  fetchByRegion()
+}
 })
+
 
 
     return(
