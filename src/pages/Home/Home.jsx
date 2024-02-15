@@ -34,7 +34,7 @@ const handlePageClick = (event) => {
   };
 
 useEffect(()=>{
-if(region === null){
+if(region === null || region === 'all'){
   const fetchCountries = async() =>{
     try{
         const response = await fetchAllCountries()
@@ -55,7 +55,7 @@ if(region === null){
         fetchCountries()
     
 }
-else if(region !== null && countries.length === 0){
+else if(region !== null && countries.length === 0 && region!=='all'){
   const fetchByRegion = async()=>{
     try{
         const response = await fetchCountriesByRegion(region)

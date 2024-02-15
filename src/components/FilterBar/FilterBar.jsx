@@ -12,6 +12,7 @@ export const FilterBar = () =>{
     const handleChange = (event) => {
         dispatch(setFilterByRegion(event.target.value))
         dispatch(setCountries([]))
+        setSelectIsOpen(false)
     };
     const hadnleClick = selectStatus => setSelectIsOpen(selectStatus)
 
@@ -43,30 +44,34 @@ export const FilterBar = () =>{
   </button>
   <ul className={scss["select-dropdown"]} role="listbox" id="select-dropdown">
     <li role="option" aria-selected>
-      <input type="radio" id="github" name="social-account" />
-      <label htmlFor="github"><i className={scss["bx bxl-github"]}></i>GitHub</label>
+      <input type="radio" id="africa" name="regions" value='africa' onClick={handleChange}/>
+      <label htmlFor="africa"><i className={scss["bx bxl-github"]}></i>Africa</label>
     </li>
     <li role="option" aria-selected>
-      <input type="radio" id="instagram" name="social-account" />
-      <label htmlFor="instagram"
-        ><i className={scss["bx bxl-instagram"]}></i>Instagram</label
+      <input type="radio" id="america" name="regions" value="america" onClick={handleChange}/>
+      <label htmlFor="america"
+        ><i className={scss["bx bxl-instagram"]}></i>America</label
       >
     </li>
     <li role="option" aria-selected>
-      <input type="radio" id="facebook" name="social-account" />
-      <label htmlFor="facebook"
-        ><i className={scss["bx bxl-facebook-circle"]}></i>Facebook</label
+      <input type="radio" id="asia" name="regions" value="asia" onClick={handleChange}/>
+      <label htmlFor="asia"
+        ><i className={scss["bx bxl-facebook-circle"]}></i>Asia</label
       >
     </li>
     <li role="option" aria-selected>
-      <input type="radio" id="linkedIn" name="social-account" />
-      <label htmlFor="linkedIn"
-        ><i className={scss["bx bxl-linkedin-square"]}></i>LinkedIn</label
+      <input type="radio" id="europe" name="regions" value="europe" onClick={handleChange}/>
+      <label htmlFor="europe"
+        ><i className={scss["bx bxl-linkedin-square"]}></i>Europe</label
       >
     </li>
     <li role="option" aria-selected>
-      <input type="radio" id="twitter" name="social-account" />
-      <label htmlFor="twitter"><i className={scss["bx bxl-twitter"]}></i>Twitter</label>
+      <input type="radio" id="oceania" name="regions"  value="oceania" onClick={handleChange}/>
+      <label htmlFor="oceania"><i className={scss["bx bxl-twitter"]}></i>Oceania</label>
+    </li>
+    <li role="option" aria-selected>
+      <input type="radio" id="none" name="regions"  value="all" onClick={handleChange}/>
+      <label htmlFor="none"><i className={scss["bx bxl-twitter"]}></i>Clear Selection</label>
     </li>
 
   </ul>
