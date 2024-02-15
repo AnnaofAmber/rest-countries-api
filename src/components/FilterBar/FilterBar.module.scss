@@ -1,24 +1,31 @@
 .custom-select {
     position: relative;
-    width: 400px;
-    max-width: 100%;
-    font-size: 1.15rem;
-    color: #000;
-    margin-top: 3rem;
+    max-width: 200px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    color: rgb(17, 21, 23);
   }
   
   .select-button {
+    padding: 14px 22px 14px 24px;
     width: 100%;
-    font-size: 1.15rem;
-    background-color: #fff;
-    padding: 0.675em 1em;
-    border: 1px solid #caced1;
-    border-radius: 0.25rem;
     cursor: pointer;
+border: none;
+    border-radius: 5px;
+box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
+background: rgb(255, 255, 255);
   
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    color: rgb(17, 21, 23);
   }
   
   .selected-value {
@@ -33,16 +40,17 @@
   }
   
   .select-dropdown {
+    box-sizing: border-box;
     position: absolute;
     list-style: none;
     width: 100%;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    background-color: #fff;
-    border: 1px solid #caced1;
-    border-radius: 4px;
-    padding: 10px;
-    margin-top: 10px;
-    max-height: 200px;
+    box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
+background: rgb(255, 255, 255);
+   
+    border-radius: 5px;
+    padding: 16px 24px;
+    margin-top: 4px;
+    max-height: 144px;
     overflow-y: auto;
     transition: 0.5s ease;
   
@@ -58,18 +66,17 @@
   .select-dropdown li {
     position: relative;
     cursor: pointer;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-  
-  .select-dropdown li label {
     width: 100%;
-    padding: 8px 10px;
+ 
+  }
+  .select-dropdown li:not(:last-child){
+margin-bottom: 8px;
+  }
+  .select-dropdown li label {
+    display: block;
+    width: 100%;
     cursor: pointer;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+    padding: 4px;
   }
   
   .select-dropdown::-webkit-scrollbar {
