@@ -9,6 +9,7 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.7",
+    "clsx": "^2.1.0",
     "i": "^0.3.7",
     "notiflix": "^3.2.7",
     "npm": "^10.4.0",
