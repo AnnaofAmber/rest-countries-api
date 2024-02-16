@@ -4,18 +4,21 @@ import { SearchBar } from 'components/SearchBar/SearchBar';
 import Notiflix from "notiflix";
 import { useEffect, useState } from "react"
 import { getCountries, getFilterByRegion } from '../../redux/selectors';
-import { fetchAllCountries, fetchCountriesByRegion} from '../../api/country-api';
+import { fetchAllCountries, fetchCountriesByRegion, fetchCountryByName} from '../../api/country-api';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCountries } from '../../redux/countriesSlice';
 import { setPagination } from '../../redux/paginationSlice';
 import ReactPaginate from 'react-paginate';
 import { Loader } from 'components/Loader/Loader';
 import { FilterBar } from 'components/FilterBar/FilterBar';
+import { useSearchParams } from 'react-router-dom';
 
 const Home = () => {
 
 const [isLoading, setIsLoading] = useState(false);
 const [apiError, setApiError] = useState(false);
+const [searchParams, setSearchParams] = useSearchParams();
+const query = searchParams.get('query');
 
 const dispatch = useDispatch()
 const countries = useSelector(getCountries)
@@ -34,7 +37,7 @@ const handlePageClick = (event) => {
   };
 
 useEffect(()=>{
-if(region === null || region === 'all'){
+if((region === null || region === 'all') && !query){
   const fetchCountries = async() =>{
     try{
         const response = await fetchAllCountries()
@@ -73,14 +76,45 @@ else if(region !== null && countries.length === 0 && region!=='all'){
   }
   fetchByRegion()
 }
+else if(query && countries.length ===0){
+const fetchByName = async () => {
+  try {
+    setIsLoading(true);
+    const result = await fetchCountryByName(query);
+    if (result.length === 0) {
+      Notiflix.Notify.failure(
+        `Oops! Seems like we do not have movie with title ${query}!`
+      );
+    } else {
+      dispatch(setCountries(result));
+    }
+  } catch (error) {
+    setApiError(true);
+    Notiflix.Notify.failure(
+      `Oops! Something went wrong! Error ${apiError} Try reloading the page!`
+    );
+  } finally {
+    setIsLoading(false);
+  }
+}
+fetchByName()
+}
 })
-
+const handleSubmit = e => {
+  e.preventDefault();
+  const searchValue = e.currentTarget.elements.searchCountryName.value;
+  if(searchValue===""){
+      Notiflix.Notify.warning(`Please enter country name!`);
+    }
+  dispatch(setCountries([]))
+  setSearchParams({ query: searchValue });
+};
 
 
     return(
         <div className={scss.container}>
             {isLoading && <Loader/>}
-            <SearchBar/>
+            <SearchBar handleSubmit={handleSubmit}/>
             <FilterBar/>
              <CountryList data={currentItems}/>
 <div >

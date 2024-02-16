@@ -13,3 +13,8 @@ const {data} = await axios.get(`/region/${region}`)
 return data
 }
 
+export const fetchCountryByName = async query => {
+    const {data} = await axios.get(`/name/${query}`)
+    return data
+}
+
