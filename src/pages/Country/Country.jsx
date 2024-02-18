@@ -1,16 +1,17 @@
 import { fetchCountryByName } from "api/country-api";
 import Notiflix from "notiflix";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+
 import { useParams } from "react-router-dom"
 import scss from './Country.module.scss'
+import { Loader } from "components/Loader/Loader";
 
 const Country = () => {
 const {name} = useParams()
 const [countryDetails, setCountryDetails] = useState()
 const [isLoading, setIsLoading] = useState(false);
 const [apiError, setApiError] = useState(false);
-const dispatch = useDispatch()
+
 
 useEffect(()=>{
     const fetchByName = async () => {
@@ -38,6 +39,7 @@ useEffect(()=>{
 console.log(countryDetails);
     return(
         <div >
+            {isLoading && <Loader/>}
 {countryDetails &&  <div key={name}>
  {countryDetails.map(({name, region, flags, population, subregion, capital, tld, currencies, languages})=>
                 (<section key={name}>
