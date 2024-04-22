@@ -4,7 +4,7 @@ import { SearchBar } from 'components/SearchBar/SearchBar';
 import Notiflix from "notiflix";
 import { useEffect, useState } from "react"
 import { getCountries, getFilterByRegion } from '../../redux/selectors';
-import { fetchAllCountries, fetchCountriesByRegion, fetchCountryByName, fetchCountryByNameSearch} from '../../api/country-api';
+import { fetchAllCountries, fetchCountriesByRegion, fetchCountryByNameSearch} from '../../api/country-api';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCountries } from '../../redux/countriesSlice';
 import { setPagination } from '../../redux/paginationSlice';
