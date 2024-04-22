@@ -8,7 +8,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(242, 242, 242);
 }
-
+a {
+  text-decoration: none;
+  color: rgb(17, 21, 23);;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
