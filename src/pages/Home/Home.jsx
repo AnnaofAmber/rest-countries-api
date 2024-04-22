@@ -101,11 +101,13 @@ fetchByName()
 }
 })
 const handleSubmit = e => {
+  
   e.preventDefault();
   const searchValue = e.currentTarget.elements.searchCountryName.value;
   if(searchValue===""){
       Notiflix.Notify.warning(`Please enter country name!`);
     }
+  
   dispatch(setCountries([]))
   setSearchParams({ query: searchValue });
 };

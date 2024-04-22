@@ -17,16 +17,6 @@ export const FilterBar = () =>{
     const hadnleClick = selectStatus => setSelectIsOpen(selectStatus)
 
  return(
-//     <div className={scss['filter-container']}>
-// <select className={scss['select-container']} onChange={handleChange}>
-// <option value="">Filter by Region</option>
-//         <option className={scss.option} value="africa">Africa</option>
-//         <option className={scss.option} value="america">America</option>
-//         <option className={scss.option} value="asia">Asia</option>
-//         <option className={scss.option} value="europe">Europe</option>
-//         <option className={scss.option} value="oceania">Oceania</option>
-//     </select>
-// </div>
 <div className={clsx(scss["custom-select"],{
     [scss.active]:selectIsOpen
 })}>

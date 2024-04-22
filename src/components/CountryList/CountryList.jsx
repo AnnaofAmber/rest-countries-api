@@ -10,7 +10,7 @@ export const CountryList = ({ data, location }) => {
             <div className={scss['info-container']}>
               <h2 className={scss.name}>{name.common}</h2>
               <p className={scss.info}>
-                Population:<span className={scss.details}> {population}</span>
+                Population:<span className={scss.details}> {population.toLocaleString('en-US')}</span>
               </p>
               <p className={scss.info}>
                 Region: <span className={scss.details}>{region}</span>

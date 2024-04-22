@@ -5,6 +5,7 @@ axios.defaults.baseURL = 'https://restcountries.com/v3.1'
 
 export const fetchAllCountries = async() => {
 const {data} = await axios.get( `/all`)
+console.log(data);
 return data
 }
 
