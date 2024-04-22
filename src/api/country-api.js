@@ -5,7 +5,7 @@ axios.defaults.baseURL = 'https://restcountries.com/v3.1'
 
 export const fetchAllCountries = async() => {
 const {data} = await axios.get( `/all`)
-console.log(data);
+
 return data
 }
 
@@ -14,8 +14,28 @@ const {data} = await axios.get(`/region/${region}`)
 return data
 }
 
-export const fetchCountryByName = async query => {
+export const fetchCountryByNameSearch = async query => {
     const {data} = await axios.get(`/name/${query}`)
-    return data
+    
+        return data
+
+    
 }
 
+
+export const fetchCountryByName = async query => {
+    const {data} = await axios.get(`/name/${query}`)
+    console.log(data.length);
+    if(data.length>1){
+        for(let i =0; i<data.length; i+=1){
+            if(data[i].name.official===query){
+                console.log('asd');
+                return [data[i]]
+            }
+        }
+    }
+    // else{
+        return data
+    // }
+    
+}

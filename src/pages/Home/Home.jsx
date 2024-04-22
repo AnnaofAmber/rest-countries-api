@@ -4,7 +4,7 @@ import { SearchBar } from 'components/SearchBar/SearchBar';
 import Notiflix from "notiflix";
 import { useEffect, useState } from "react"
 import { getCountries, getFilterByRegion } from '../../redux/selectors';
-import { fetchAllCountries, fetchCountriesByRegion, fetchCountryByName} from '../../api/country-api';
+import { fetchAllCountries, fetchCountriesByRegion, fetchCountryByName, fetchCountryByNameSearch} from '../../api/country-api';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCountries } from '../../redux/countriesSlice';
 import { setPagination } from '../../redux/paginationSlice';
@@ -80,10 +80,10 @@ else if(query && countries.length ===0){
 const fetchByName = async () => {
   try {
     setIsLoading(true);
-    const result = await fetchCountryByName(query);
+    const result = await fetchCountryByNameSearch(query);
     if (result.length === 0) {
       Notiflix.Notify.failure(
-        `Oops! Seems like we do not have movie with title ${query}!`
+        `Oops! Seems like we do not have country with a name ${query}!`
       );
     } else {
       dispatch(setCountries(result));
@@ -99,7 +99,7 @@ const fetchByName = async () => {
 }
 fetchByName()
 }
-})
+}, [apiError, countries.length, dispatch,query, region])
 const handleSubmit = e => {
   
   e.preventDefault();

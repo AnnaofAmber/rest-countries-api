@@ -5,10 +5,10 @@ export const CountryList = ({ data, location }) => {
     <ul className={scss.list}>
       {data.map(({ name, capital, population, region, flags }) => (
         <li className={scss.item} key={flags.png}>
-          <Link state={{from: location}} to={`/country/${name.common}`}>
+          <Link state={{from: location}} to={`/country/${name.official}`}>
             <img className={scss.flag} src={flags.png} alt={flags.alt} />
             <div className={scss['info-container']}>
-              <h2 className={scss.name}>{name.common}</h2>
+              <h2 className={scss.name}>{name.official}</h2>
               <p className={scss.info}>
                 Population:<span className={scss.details}> {population.toLocaleString('en-US')}</span>
               </p>
