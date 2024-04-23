@@ -1,9 +1,10 @@
 import scss from './Header.module.scss';
 import { ReactComponent as Theme } from '../../images/icons/theme.svg';
-export const Header = () => {
+import { Link, NavLink } from 'react-router-dom';
+export const Header = ({location}) => {
   return (
     <header className={scss.header}>
-      <h1 className={scss.title}>Where in the world?</h1>
+      <NavLink className={scss.title} to={`/`}>Where in the world?</NavLink>
       <div className={scss['theme-container']}>
         {' '}
         <Theme className={scss['theme-icon']}/>

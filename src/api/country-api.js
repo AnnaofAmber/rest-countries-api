@@ -25,7 +25,6 @@ export const fetchCountryByNameSearch = async query => {
 
 export const fetchCountryByName = async query => {
     const {data} = await axios.get(`/name/${query}`)
-    console.log(data.length);
     if(data.length>1){
         for(let i =0; i<data.length; i+=1){
             if(data[i].name.official===query){
@@ -34,8 +33,6 @@ export const fetchCountryByName = async query => {
             }
         }
     }
-    // else{
         return data
-    // }
     
 }

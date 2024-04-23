@@ -41,7 +41,6 @@ useEffect(()=>{
       }
       fetchByName()
 }, [apiError, name,])
-console.log(countryDetails);
 if(countryDetails){
   for(const key in countryDetails[0].name.nativeName){
     nativeNameOfficial = countryDetails[0].name.nativeName[key].official
@@ -51,29 +50,32 @@ if(countryDetails){
   }
   for(const key in countryDetails[0].languages){
     languages.push(countryDetails[0].languages[key])
-    console.log(languages);
   }
 
 }
     return(
         <div >
             {isLoading && <Loader/>}
-{countryDetails &&  <div key={name}>
+{countryDetails &&  <div className={scss.container} key={name}>
  {countryDetails.map(({name, region, flags, population, subregion, capital, tld})=>
  
                 (
 
-                <section key={name}>
-                    <img className={scss.flag} src={flags.png} alt={flags.alt} />
-                    <h2>{name.common}</h2>
-                    <p>Native Name: {nativeNameOfficial} </p> 
-                    <p>Population: {population.toLocaleString('en-En')}</p>
-                    <p>Region: {region}  </p>
-                    <p>Sub Region: {subregion}</p>
-                    {capital?<p>Capital: {capital}</p>: <p>Capital: None</p> }
-               <p>Top Level Domain: {tld}</p>
-                     <p>Currencies: {currencies}</p>
-                    <p>Languages: { languages.join(', ')}</p> 
+                <section key={name} className={scss['section-country']}>
+                    <img className={scss['country-flag']} src={flags.png} alt={flags.alt} />
+                    <h2 className={scss['country-name']}>{name.common}</h2>
+<div className={scss['country-info-main']}>
+<p>Native Name: <span className={scss['country-info']}>{nativeNameOfficial}</span> </p> 
+                    <p>Population: <span className={scss['country-info']}>{population.toLocaleString('en-En')}</span></p>
+                    <p>Region: <span className={scss['country-info']}>{region}</span>  </p>
+                    <p>Sub Region: <span className={scss['country-info']}>{subregion}</span></p>
+                    {capital?<p>Capital: <span className={scss['country-info']}>{capital}</span></p>: <p>Capital: <span className={scss['country-info']}>None</span></p> }
+</div>
+               <div>
+               <p>Top Level Domain: <span className={scss['country-info']}>{tld}</span></p>
+                     <p>Currencies: <span className={scss['country-info']}>{currencies}</span></p>
+                    <p>Languages: <span className={scss['country-info']}>{ languages.join(', ')}</span></p> 
+               </div>
                     <p>Border Countries: </p>
                 </section>))
             }

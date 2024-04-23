@@ -41,9 +41,7 @@ if((region === null || region === 'all') && !query){
   const fetchCountries = async() =>{
     try{
         const response = await fetchAllCountries()
-        if(countries.length === 0){
             dispatch(setCountries(response))
-        }
     }
     catch (error) {
         setApiError(true);
@@ -76,7 +74,7 @@ else if(region !== null && countries.length === 0 && region!=='all'){
   }
   fetchByRegion()
 }
-else if(query && countries.length ===0){
+else if(query){
 const fetchByName = async () => {
   try {
     setIsLoading(true);
@@ -99,7 +97,7 @@ const fetchByName = async () => {
 }
 fetchByName()
 }
-}, [apiError, countries.length, dispatch,query, region])
+}, [apiError, countries.length, dispatch, query, region])
 const handleSubmit = e => {
   
   e.preventDefault();
@@ -107,8 +105,6 @@ const handleSubmit = e => {
   if(searchValue===""){
       Notiflix.Notify.warning(`Please enter country name!`);
     }
-  
-  dispatch(setCountries([]))
   setSearchParams({ query: searchValue });
 };
 
