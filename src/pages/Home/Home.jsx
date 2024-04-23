@@ -2,7 +2,7 @@ import scss from './Home.module.scss'
 import { CountryList } from "components/CountryList/CountryList";
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import Notiflix from "notiflix";
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { getCountries, getFilterByRegion } from '../../redux/selectors';
 import { fetchAllCountries, fetchCountriesByRegion, fetchCountryByNameSearch} from '../../api/country-api';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,9 +12,11 @@ import ReactPaginate from 'react-paginate';
 import { Loader } from 'components/Loader/Loader';
 import { FilterBar } from 'components/FilterBar/FilterBar';
 import { useSearchParams } from 'react-router-dom';
+import { setFilterByRegion } from '../../redux/filterRegionSlice';
 
 const Home = () => {
 
+  const refInput = useRef()
 const [isLoading, setIsLoading] = useState(false);
 const [apiError, setApiError] = useState(false);
 const [searchParams, setSearchParams] = useSearchParams();
@@ -37,7 +39,8 @@ const handlePageClick = (event) => {
   };
 
 useEffect(()=>{
-if((region === null || region === 'all') && !query){
+
+if((region === null || region === 'all') && query!==''){
   const fetchCountries = async() =>{
     try{
         const response = await fetchAllCountries()
@@ -57,11 +60,13 @@ if((region === null || region === 'all') && !query){
     
 }
 else if(region !== null && countries.length === 0 && region!=='all'){
+  setSearchParams({ query: '' });
+  refInput.current.textContent=''
   const fetchByRegion = async()=>{
     try{
         const response = await fetchCountriesByRegion(region)
             dispatch(setCountries(response))
-
+            
     }
     catch (error) {
         setApiError(true);
@@ -72,6 +77,7 @@ else if(region !== null && countries.length === 0 && region!=='all'){
         setIsLoading(false);
       }
   }
+  dispatch(setFilterByRegion(null))
   fetchByRegion()
 }
 else if(query){
@@ -97,7 +103,7 @@ const fetchByName = async () => {
 }
 fetchByName()
 }
-}, [apiError, countries.length, dispatch, query, region])
+}, [apiError, countries.length, dispatch, query, region, setSearchParams])
 const handleSubmit = e => {
   
   e.preventDefault();
@@ -106,17 +112,18 @@ const handleSubmit = e => {
       Notiflix.Notify.warning(`Please enter country name!`);
     }
   setSearchParams({ query: searchValue });
+  setItemOffset(0)
 };
 
 
     return(
         <div className={scss.container}>
             {isLoading && <Loader/>}
-            <SearchBar handleSubmit={handleSubmit}/>
-            <FilterBar/>
+            <SearchBar r={refInput} handleSubmit={handleSubmit}/>
+            <FilterBar />
              <CountryList data={currentItems}/>
 <div >
-<ReactPaginate 
+{pageCount>=8 && <ReactPaginate 
         breakLabel="..."
         nextLabel="next >"
         onPageChange={handlePageClick}
@@ -125,7 +132,7 @@ const handleSubmit = e => {
         previousLabel="< previous"
         renderOnZeroPageCount={null}
         className='page-container'
-        />
+        />}
 </div>
         </div>
     )

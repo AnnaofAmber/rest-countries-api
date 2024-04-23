@@ -6,9 +6,11 @@ import { useState } from 'react';
 import clsx from 'clsx';
 
 
+
 export const FilterBar = () =>{
     const [selectIsOpen, setSelectIsOpen]= useState(false)
     const dispatch = useDispatch()
+
     const handleChange = (event) => {
         dispatch(setFilterByRegion(event.target.value))
         dispatch(setCountries([]))
