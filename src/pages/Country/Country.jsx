@@ -69,10 +69,10 @@ const Country = ({location}) => {
 
 
   return (
-    <div>
+    <div  className={scss.container}>
       {isLoading && <Loader />}
       {countryDetails && (
-        <div className={scss.container} key={name}>
+        <div key={name}>
           {countryDetails.map(
             ({ name, region, flags, population, subregion, capital, tld }) => (
               <section key={name} className={scss['section-country']}>

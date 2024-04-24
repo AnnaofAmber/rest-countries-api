@@ -43,22 +43,20 @@ useEffect(()=>{
 },[apiError, cioc,dispatch])
 
 return(
-    <div>
-       {borderCountries.length>0 && <div className={scss['container-border-countries']}>
-                  <p>Border Countries: </p>
-                 <ul>
+<div className={scss['container-border-countries']}>
+                  <p className={scss.title}>Border Countries: </p>
+                 <ul className={scss['list-border-countries']}>
                    {
 borderCountries.map(({name, flags})=>(
-  <li key={flags.png}>
+  <li className={scss.country} key={flags.png}>
     <Link state={{from: location}} to={`/country/${name.official}`}>
-
+        <p>{name.common}</p>
     </Link>
   </li>
 ))}
                    
                   </ul>
-                </div>} 
-    </div>
+                </div>
 )
 }
 
