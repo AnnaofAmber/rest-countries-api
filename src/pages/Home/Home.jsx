@@ -12,7 +12,6 @@ import ReactPaginate from 'react-paginate';
 import { Loader } from 'components/Loader/Loader';
 import { FilterBar } from 'components/FilterBar/FilterBar';
 import { useSearchParams } from 'react-router-dom';
-import { setFilterByRegion } from '../../redux/filterRegionSlice';
 
 const Home = () => {
 
@@ -40,7 +39,7 @@ const handlePageClick = (event) => {
 
 useEffect(()=>{
 
-if((region === null || region === 'all') && query!==''){
+if((region === null || region === 'all') && !query ){
   const fetchCountries = async() =>{
     try{
         const response = await fetchAllCountries()
@@ -77,7 +76,7 @@ else if(region !== null && countries.length === 0 && region!=='all'){
         setIsLoading(false);
       }
   }
-  dispatch(setFilterByRegion(null))
+ 
   fetchByRegion()
 }
 else if(query){
@@ -105,7 +104,6 @@ fetchByName()
 }
 }, [apiError, countries.length, dispatch, query, region, setSearchParams])
 const handleSubmit = e => {
-  
   e.preventDefault();
   const searchValue = e.currentTarget.elements.searchCountryName.value;
   if(searchValue===""){
@@ -119,7 +117,7 @@ const handleSubmit = e => {
     return(
         <div className={scss.container}>
             {isLoading && <Loader/>}
-            <SearchBar r={refInput} handleSubmit={handleSubmit}/>
+            <SearchBar refQuery={refInput} handleSubmit={handleSubmit}/>
             <FilterBar />
              <CountryList data={currentItems}/>
 <div >

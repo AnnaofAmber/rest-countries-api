@@ -36,3 +36,12 @@ export const fetchCountryByName = async query => {
         return data
     
 }
+
+export const fetchCountryByCioc = async cioc => {
+    let result =[]
+for(let i =0;  i<cioc.length; i+=1){
+    const {data} = await axios.get(`/alpha/${cioc[i]}`)
+    result.push(...data)
+    }
+return result
+}
