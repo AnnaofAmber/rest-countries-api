@@ -1,18 +1,15 @@
-import { fetchCountryByCioc, fetchCountryByName } from 'api/country-api';
+import { fetchCountryByName } from 'api/country-api';
 import Notiflix from 'notiflix';
 import { useEffect, useState } from 'react';
 
-import { Link, useParams } from 'react-router-dom';
+import {useParams } from 'react-router-dom';
 import scss from './Country.module.scss';
 import { Loader } from 'components/Loader/Loader';
-import { useDispatch, useSelector } from 'react-redux';
-import { getBorderCountries } from '../../redux/selectors';
-import { setBorderCountries } from '../../redux/borderCountriesSlice';
+import { useDispatch } from 'react-redux';
 import BorderCountriesList from 'components/BorderCountriesList/BorderCountriesList';
 
 const Country = ({location}) => {
   const { name } = useParams();
-  const borderCountries = useSelector(getBorderCountries)
   const dispatch = useDispatch()
   const [countryDetails, setCountryDetails] = useState();
   const [isLoading, setIsLoading] = useState(false);

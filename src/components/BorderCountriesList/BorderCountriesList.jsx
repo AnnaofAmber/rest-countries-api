@@ -6,6 +6,7 @@ import { setBorderCountries } from '../../redux/borderCountriesSlice'
 import { fetchCountryByCioc } from 'api/country-api'
 import Notiflix from 'notiflix'
 import { Link } from 'react-router-dom'
+import { Loader } from 'components/Loader/Loader'
 
 
 
@@ -44,6 +45,7 @@ useEffect(()=>{
 
 return(
 <div className={scss['container-border-countries']}>
+{isLoading && <Loader/>}
                   <p className={scss.title}>Border Countries: </p>
                  <ul className={scss['list-border-countries']}>
                    {
