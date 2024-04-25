@@ -11,7 +11,6 @@ import { Loader } from 'components/Loader/Loader'
 
 
 const BorderCountriesList = ({cioc, location})=>{
-console.log(cioc);
 const borderCountries = useSelector(getBorderCountries)
 const [isLoading, setIsLoading] = useState(false);
 const [apiError, setApiError] = useState(false);
@@ -26,7 +25,6 @@ useEffect(()=>{
           if (cioc) {
             
   const result = await fetchCountryByCioc(cioc)
-  console.log(result);
       dispatch(setBorderCountries(result));
           }
   
@@ -41,7 +39,7 @@ useEffect(()=>{
         }
       }
       fetchByCioc()
-},[apiError, cioc,dispatch])
+},[apiError, cioc, dispatch])
 
 return(
 <div className={scss['container-border-countries']}>

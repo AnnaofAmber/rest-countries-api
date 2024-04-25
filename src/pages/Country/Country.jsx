@@ -1,15 +1,18 @@
 import { fetchCountryByName } from 'api/country-api';
 import Notiflix from 'notiflix';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import {useParams } from 'react-router-dom';
+import {Link, useLocation, useParams } from 'react-router-dom';
 import scss from './Country.module.scss';
 import { Loader } from 'components/Loader/Loader';
 import { useDispatch } from 'react-redux';
 import BorderCountriesList from 'components/BorderCountriesList/BorderCountriesList';
 
-const Country = ({location}) => {
+import {ReactComponent as Arrow} from '../../images/icons/arrowBack.svg'
+const Country = () => {
   const { name } = useParams();
+  const location = useLocation();
+  const backLinkHref = useRef(location.state?.from ?? '/');
   const dispatch = useDispatch()
   const [countryDetails, setCountryDetails] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -68,6 +71,7 @@ const Country = ({location}) => {
   return (
     <div  className={scss.container}>
       {isLoading && <Loader />}
+      <Link className={scss.link_back} to={backLinkHref.current}><Arrow/>Back</Link>
       {countryDetails && (
         <div key={name}>
           {countryDetails.map(
