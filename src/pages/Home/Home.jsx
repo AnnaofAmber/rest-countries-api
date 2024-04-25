@@ -125,11 +125,20 @@ const handleSubmit = e => {
         breakLabel="..."
         nextLabel="next >"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
+        pageRangeDisplayed={2}
+        marginPagesDisplayed={2}
         pageCount={pageCount}
         previousLabel="< previous"
         renderOnZeroPageCount={null}
-        className='page-container'
+        className={scss['page-container']}
+        breakClassName={scss['page-break']}
+        pageClassName={scss['page-item']}
+        pageLinkClassName={scss['page-link']}
+        activeClassName={scss['page-active']}
+        previousClassName={scss['page-item-controlls']}
+        nextClassName={scss['page-item-controlls']}
+        previousLinkClassName={scss['page-controlls']}
+        nextLinkClassName={scss['page-controlls']}
         />}
 </div>
         </div>

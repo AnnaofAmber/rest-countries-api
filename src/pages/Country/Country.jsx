@@ -64,10 +64,6 @@ const Country = () => {
     }
   }
 
-
-
-
-
   return (
     <div  className={scss.container}>
       {isLoading && <Loader />}
