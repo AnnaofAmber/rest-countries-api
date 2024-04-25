@@ -71,7 +71,7 @@ const Country = () => {
   return (
     <div  className={scss.container}>
       {isLoading && <Loader />}
-      <Link className={scss.link_back} to={backLinkHref.current}><Arrow/>Back</Link>
+      <Link className={scss['link-back']} to={backLinkHref.current}><Arrow/>Back</Link>
       {countryDetails && (
         <div key={name}>
           {countryDetails.map(
