@@ -1,15 +1,17 @@
 import scss from './FilterBar.module.scss'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setFilterByRegion } from '../../redux/filterRegionSlice';
 import { setCountries } from '../../redux/countriesSlice';
 import { useState } from 'react';
 import clsx from 'clsx';
+import { getTheme } from '../../redux/selectors';
 
 
 
 export const FilterBar = () =>{
     const [selectIsOpen, setSelectIsOpen]= useState(false)
     const dispatch = useDispatch()
+    const theme = useSelector(getTheme)
 
     const handleChange = (event) => {
         dispatch(setFilterByRegion(event.target.value))
@@ -20,7 +22,7 @@ export const FilterBar = () =>{
 
  return(
 <div className={clsx(scss["custom-select"],{
-    [scss.active]:selectIsOpen
+    [scss.active]:selectIsOpen, [scss.dark]:theme
 })}>
   <button
     className={scss["select-button"]}

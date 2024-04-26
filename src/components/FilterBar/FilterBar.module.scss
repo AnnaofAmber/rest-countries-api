@@ -118,3 +118,42 @@ margin-bottom: 8px;
     visibility: visible;
     transform: scaleY(1);
   }
+
+
+  .dark{
+    &.custom-select{
+color: rgb(255, 255, 255);
+    }
+    .select-button{
+      color: rgb(255, 255, 255);
+      box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
+      background: rgb(43, 56, 68);
+    }
+
+    .arrow {
+      border-top: 6px solid rgb(255, 255, 255);
+   
+    }
+    
+    .select-dropdown {
+      box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
+background: rgb(43, 56, 68);
+    }
+
+    .select-dropdown::-webkit-scrollbar-track {
+      background: #5a5d61;
+    }
+    
+    .select-dropdown::-webkit-scrollbar-thumb {
+      background: rgb(32, 44, 54);
+    }
+    
+    .select-dropdown li:hover,
+    .select-dropdown input:checked ~ label {
+      background-color: #f2f2f2;
+    }
+    
+    .select-dropdown input:focus ~ label {
+      background-color: #dfdfdf;
+    }
+  }
