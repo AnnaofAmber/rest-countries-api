@@ -27,18 +27,22 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-const authConfig = {
+const themeConfig = {
   key: 'theme',
+  storage,
+};
+const pageConfig = {
+  key: 'page',
   storage,
 };
 
 export const rootReducer = combineReducers({
 
   countries: countriesReducer,
-  pagination: paginationReducer,
+  pagination: persistReducer(pageConfig, paginationReducer),
   filterByRegion: filterByRegionReducer,
   borderCountries:borderCountriesReducer,
-  theme: persistReducer(authConfig, themeReducer)
+  theme: persistReducer(themeConfig, themeReducer),
 });
 
 export const store = configureStore({

@@ -3,11 +3,11 @@ import { CountryList } from "components/CountryList/CountryList";
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import Notiflix from "notiflix";
 import { useEffect, useRef, useState } from "react"
-import { getCountries, getFilterByRegion, getTheme } from '../../redux/selectors';
+import { getCountries, getFilterByRegion, getPage, getTheme } from '../../redux/selectors';
 import { fetchAllCountries, fetchCountriesByRegion, fetchCountryByNameSearch} from '../../api/country-api';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCountries } from '../../redux/countriesSlice';
-import { setPagination } from '../../redux/paginationSlice';
+import { setPage, setPagination } from '../../redux/paginationSlice';
 import ReactPaginate from 'react-paginate';
 import { Loader } from 'components/Loader/Loader';
 import { FilterBar } from 'components/FilterBar/FilterBar';
@@ -16,7 +16,7 @@ import clsx from 'clsx';
 
 const Home = () => {
 
-  const refInput = useRef()
+const refInput = useRef()
 const [isLoading, setIsLoading] = useState(false);
 const [apiError, setApiError] = useState(false);
 const [searchParams, setSearchParams] = useSearchParams();
@@ -26,8 +26,10 @@ const dispatch = useDispatch()
 const countries = useSelector(getCountries)
 const region = useSelector(getFilterByRegion)
 const theme = useSelector(getTheme)
+const page = useSelector(getPage)
 
 // pagination
+
 const [itemOffset, setItemOffset] = useState(0);
 const endOffset = itemOffset + 8;
 const currentItems = countries.slice(itemOffset, endOffset);
@@ -37,10 +39,10 @@ const handlePageClick = (event) => {
     const newOffset = (event.selected * 8) % countries.length
     setItemOffset(newOffset);
     dispatch(setPagination([]))
+    dispatch(setPage(event.selected))
   };
 
 useEffect(()=>{
-
 if((region === null || region === 'all') && !query ){
   const fetchCountries = async() =>{
     try{
@@ -115,7 +117,6 @@ const handleSubmit = e => {
   setItemOffset(0)
 };
 
-
     return(
         <div className={clsx(scss.container, {
           [scss.dark]:theme
@@ -126,6 +127,7 @@ const handleSubmit = e => {
              <CountryList data={currentItems}/>
 <div >
 {pageCount>=8 && <ReactPaginate 
+  initialPage={page}
         breakLabel="..."
         nextLabel="next >"
         onPageChange={handlePageClick}
