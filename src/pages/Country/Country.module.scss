@@ -51,3 +51,15 @@
 .country-info {
   font-weight: 300;
 }
+
+.dark{
+  &.container{
+    background: rgb(32, 44, 54);
+    color: rgb(255, 255, 255);
+  }
+  .link-back{
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.29);
+background: rgb(43, 56, 68);
+color: rgb(255, 255, 255);
+  }
+}

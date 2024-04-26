@@ -5,10 +5,13 @@ import { useEffect, useRef, useState } from 'react';
 import {Link, useLocation, useParams } from 'react-router-dom';
 import scss from './Country.module.scss';
 import { Loader } from 'components/Loader/Loader';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import BorderCountriesList from 'components/BorderCountriesList/BorderCountriesList';
 
 import {ReactComponent as Arrow} from '../../images/icons/arrowBack.svg'
+import {ReactComponent as ArrowWhite} from '../../images/icons/arrowBackWhite.svg'
+import { getTheme } from '../../redux/selectors';
+import clsx from 'clsx';
 const Country = () => {
   const { name } = useParams();
   const location = useLocation();
@@ -18,6 +21,7 @@ const Country = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [apiError, setApiError] = useState(false);
 
+  const theme = useSelector(getTheme)
   let nativeNameOfficial;
   let currencies;
   let languages = [];
@@ -65,9 +69,11 @@ const Country = () => {
   }
 
   return (
-    <div  className={scss.container}>
+    <div  className={clsx(scss.container, {
+      [scss.dark]:theme
+    })}>
       {isLoading && <Loader />}
-      <Link className={scss['link-back']} to={backLinkHref.current}><Arrow/>Back</Link>
+      <Link className={scss['link-back']} to={backLinkHref.current}>{theme?<ArrowWhite/>:<Arrow/>}Back</Link>
       {countryDetails && (
         <div key={name}>
           {countryDetails.map(
