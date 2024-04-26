@@ -1,5 +1,6 @@
 .container{
     padding: 24px 16px 65px 16px;
+
 }
 
 .page-container{
@@ -23,12 +24,10 @@
     font-size: 12px;
     
 }
-.page-link{
-    
-}
+
 .page-active{
 
-    background-color: rgb(255, 255, 255);;
+    background-color: rgb(255, 255, 255);
 }
 .page-item-controlls{
     height: 25px;
@@ -42,3 +41,25 @@
 .page-controlls{
     font-size: 12px;
 }
+
+.dark{
+    &.container{
+        background: rgb(32, 44, 54);
+    }
+    .page-item{
+        background-color: rgba(17, 21, 23, 0.712);
+    }
+    .page-link{
+        color: rgb(255, 255, 255);
+    }
+    .page-active{
+        background-color: rgb(43, 56, 68);
+    }
+    .page-controlls{
+        color: rgb(255, 255, 255);
+    }
+    .page-break{
+        color: rgb(255, 255, 255);
+    }
+}
+

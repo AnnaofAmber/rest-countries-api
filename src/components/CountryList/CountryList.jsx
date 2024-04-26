@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom';
 import scss from './CountryList.module.scss';
+import { useSelector } from 'react-redux';
+import { getTheme } from '../../redux/selectors';
+import clsx from 'clsx';
 export const CountryList = ({ data, location }) => {
+  const theme = useSelector(getTheme)
   return (
-    <ul className={scss.list}>
+    <ul className={clsx(scss.list, {
+      [scss.dark]:theme
+    })}>
       {data.map(({ name, capital, population, region, flags }) => (
         <li className={scss.item} key={flags.png}>
           <Link state={{from: location}} to={`/country/${name.official}`}>

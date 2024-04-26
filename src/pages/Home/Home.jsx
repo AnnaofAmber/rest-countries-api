@@ -3,7 +3,7 @@ import { CountryList } from "components/CountryList/CountryList";
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import Notiflix from "notiflix";
 import { useEffect, useRef, useState } from "react"
-import { getCountries, getFilterByRegion } from '../../redux/selectors';
+import { getCountries, getFilterByRegion, getTheme } from '../../redux/selectors';
 import { fetchAllCountries, fetchCountriesByRegion, fetchCountryByNameSearch} from '../../api/country-api';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCountries } from '../../redux/countriesSlice';
@@ -12,6 +12,7 @@ import ReactPaginate from 'react-paginate';
 import { Loader } from 'components/Loader/Loader';
 import { FilterBar } from 'components/FilterBar/FilterBar';
 import { useSearchParams } from 'react-router-dom';
+import clsx from 'clsx';
 
 const Home = () => {
 
@@ -24,6 +25,7 @@ const query = searchParams.get('query');
 const dispatch = useDispatch()
 const countries = useSelector(getCountries)
 const region = useSelector(getFilterByRegion)
+const theme = useSelector(getTheme)
 
 // pagination
 const [itemOffset, setItemOffset] = useState(0);
@@ -115,7 +117,9 @@ const handleSubmit = e => {
 
 
     return(
-        <div className={scss.container}>
+        <div className={clsx(scss.container, {
+          [scss.dark]:theme
+        })}>
             {isLoading && <Loader/>}
             <SearchBar refQuery={refInput} handleSubmit={handleSubmit}/>
             <FilterBar />
@@ -131,7 +135,6 @@ const handleSubmit = e => {
         previousLabel="< previous"
         renderOnZeroPageCount={null}
         className={scss['page-container']}
-        breakClassName={scss['page-break']}
         pageClassName={scss['page-item']}
         pageLinkClassName={scss['page-link']}
         activeClassName={scss['page-active']}
@@ -139,6 +142,7 @@ const handleSubmit = e => {
         nextClassName={scss['page-item-controlls']}
         previousLinkClassName={scss['page-controlls']}
         nextLinkClassName={scss['page-controlls']}
+        breakLinkClassName={scss['page-break']}
         />}
 </div>
         </div>
