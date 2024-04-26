@@ -20,3 +20,17 @@ margin-right: 26px;
 .input{
     border: none;
 }
+
+.dark{
+    &.form{
+        box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
+background: rgb(43, 56, 68);
+
+    }
+
+    .input{
+        background: rgb(43, 56, 68);
+        color: rgb(255, 255, 255);
+    }
+
+}
