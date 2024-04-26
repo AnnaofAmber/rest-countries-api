@@ -3,13 +3,16 @@ import scss from './Header.module.scss';
 import {  NavLink } from 'react-router-dom';
 import { setTheme } from '../../redux/themeSlice';
 import { getTheme } from '../../redux/selectors';
+import clsx from 'clsx';
 export const Header = () => {
 const theme = useSelector(getTheme)
 const dispatch = useDispatch()
   const handleThemeChange =theme=> dispatch(setTheme(theme))
 
   return (
-    <header className={scss.header}>
+    <header className={clsx(scss.header, {
+      [scss.dark]:theme
+  })}>
       <NavLink className={scss.title} to={`/`}>Where in the world?</NavLink>
       <div className={scss['theme-container']}>
         {' '}
