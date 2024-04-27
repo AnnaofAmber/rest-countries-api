@@ -1,74 +1,91 @@
-.container{
-    padding: 24px 16px 65px 16px;
+.container {
+  padding: 24px 16px 65px 16px;
+ 
 }
 @media only screen and (min-width: 768px) {
-   .container{
+  .container {
     padding: 48px 80px;
   }
 }
 
-.page-container{
-    padding-top: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-
+.page-container {
+  padding-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
-.page-item{
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 23px;
-    height: 23px;
-
-    box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.03);
-    border-radius: 50%;
-    font-size: 12px;
-    
+@media only screen and (min-width: 768px) {
+  .page-container {
+    padding-top: 64px;
+    gap: 10px;
+  }
 }
 
-.page-active{
+.page-item {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 23px;
+  height: 23px;
 
-    background-color: rgb(255, 255, 255);
-}
-.page-item-controlls{
-    height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-.page-controlls{
-    font-size: 12px;
-}
-
-.dark{
-    &.container{
-        background: rgb(32, 44, 54);
-    }
-    .page-item{
-        background-color: rgba(17, 21, 23, 0.712);
-    }
-    .page-link{
-        color: rgb(255, 255, 255);
-    }
-    .page-active{
-        background-color: rgb(43, 56, 68);
-    }
-    .page-controlls{
-        color: rgb(255, 255, 255);
-    }
-    .page-break{
-        color: rgb(255, 255, 255);
-    }
+  box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.03);
+  border-radius: 50%;
+  font-size: 12px;
 }
 
 @media only screen and (min-width: 768px) {
-   .search-container{
+  .page-item {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+  }
+}
+
+.page-active {
+  background-color: rgb(255, 255, 255);
+}
+.page-item-controlls {
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-controlls {
+  font-size: 12px;
+}
+
+@media only screen and (min-width: 768px) {
+    .page-controlls {
+        font-size: 15px;
+      }
+}
+
+.dark {
+  &.container {
+    background: rgb(32, 44, 54);
+  }
+  .page-item {
+    background-color: rgba(17, 21, 23, 0.712);
+  }
+  .page-link {
+    color: rgb(255, 255, 255);
+  }
+  .page-active {
+    background-color: rgb(43, 56, 68);
+  }
+  .page-controlls {
+    color: rgb(255, 255, 255);
+  }
+  .page-break {
+    color: rgb(255, 255, 255);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .search-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
