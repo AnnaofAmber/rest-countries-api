@@ -87,6 +87,7 @@ const Country = () => {
                   alt={flags.alt}
                 />
                 <h2 className={scss['country-name']}>{name.common}</h2>
+                <div className={scss['container-info']}>
                 <div className={scss['country-info-main']}>
                   <p>
                     Native Name:{' '}
@@ -136,7 +137,7 @@ const Country = () => {
                     </span>
                   </p>
                 </div>
-                
+                </div>
               </section>
             )
           )}
