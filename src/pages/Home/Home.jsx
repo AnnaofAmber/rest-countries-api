@@ -124,8 +124,10 @@ const handleSubmit = e => {
         <div className={clsx(scss.container, {
           [scss.dark]:theme
         })}>
-            <SearchBar refQuery={refInput} handleSubmit={handleSubmit}/>
+<div className={scss['search-container']}>
+<SearchBar refQuery={refInput} handleSubmit={handleSubmit}/>
             <FilterBar />
+</div>
             {isLoading && <Loader/>}
              <CountryList data={currentItems}/>
 <div >

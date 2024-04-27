@@ -1,6 +1,10 @@
 .container{
     padding: 24px 16px 65px 16px;
-
+}
+@media only screen and (min-width: 768px) {
+   .container{
+    padding: 48px 80px;
+  }
 }
 
 .page-container{
@@ -63,3 +67,10 @@
     }
 }
 
+@media only screen and (min-width: 768px) {
+   .search-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
