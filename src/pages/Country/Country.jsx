@@ -43,7 +43,8 @@ const Country = () => {
         Notiflix.Notify.failure(
           `Oops! Something went wrong! Error ${apiError} Try reloading the page!`
         );
-      } finally {
+      } 
+      finally {
         setIsLoading(false);
       }
     };
@@ -72,8 +73,9 @@ const Country = () => {
     <div  className={clsx(scss.container, {
       [scss.dark]:theme
     })}>
-      {isLoading && <Loader />}
+
       <Link className={scss['link-back']} to={backLinkHref.current}>{theme?<ArrowWhite/>:<Arrow/>}Back</Link>
+      {isLoading && <Loader />}
       {countryDetails && (
         <div key={name}>
           {countryDetails.map(

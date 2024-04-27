@@ -1,5 +1,5 @@
 import Home from "pages/Home/Home";
-import { Header } from "./Header/Header";
+import { Header } from "../Header/Header";
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import Country from "pages/Country/Country";

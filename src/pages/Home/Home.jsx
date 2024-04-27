@@ -17,7 +17,7 @@ import clsx from 'clsx';
 const Home = () => {
 
 const refInput = useRef()
-const [isLoading, setIsLoading] = useState(false);
+const [isLoading, setIsLoading] = useState(true);
 const [apiError, setApiError] = useState(false);
 const [searchParams, setSearchParams] = useSearchParams();
 const query = searchParams.get('query');
@@ -54,7 +54,8 @@ if((region === null || region === 'all') && !query ){
         Notiflix.Notify.failure(
           `Oops! Something went wrong! Error ${apiError} Try reloading the page!`
         );
-      } finally {
+      } 
+      finally {
         setIsLoading(false);
       }
     
@@ -76,7 +77,8 @@ else if(region !== null && countries.length === 0 && region!=='all'){
         Notiflix.Notify.failure(
           `Oops! Something went wrong! Error ${apiError} Try reloading the page!`
         );
-      } finally {
+      } 
+      finally {
         setIsLoading(false);
       }
   }
@@ -100,7 +102,8 @@ const fetchByName = async () => {
     Notiflix.Notify.failure(
       `Oops! Something went wrong! Error ${apiError} Try reloading the page!`
     );
-  } finally {
+  } 
+  finally {
     setIsLoading(false);
   }
 }
@@ -121,9 +124,9 @@ const handleSubmit = e => {
         <div className={clsx(scss.container, {
           [scss.dark]:theme
         })}>
-            {isLoading && <Loader/>}
             <SearchBar refQuery={refInput} handleSubmit={handleSubmit}/>
             <FilterBar />
+            {isLoading && <Loader/>}
              <CountryList data={currentItems}/>
 <div >
 {pageCount>=8 && <ReactPaginate 
