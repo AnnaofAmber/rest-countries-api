@@ -86,6 +86,7 @@ const Country = () => {
                   src={flags.png}
                   alt={flags.alt}
                 />
+                <div>
                 <h2 className={scss['country-name']}>{name.common}</h2>
                 <div className={scss['container-info']}>
                 <div className={scss['country-info-main']}>
@@ -138,12 +139,15 @@ const Country = () => {
                   </p>
                 </div>
                 </div>
+                <BorderCountriesList cioc = {cioc}/>
+                </div>
+                
               </section>
             )
           )}
         </div>
       )}
-      <BorderCountriesList cioc = {cioc}/>
+      
     </div>
   );
 };

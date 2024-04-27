@@ -48,7 +48,7 @@ const BorderCountriesList = ({ cioc, location }) => {
           [scss.dark]:theme
           })} key={flags.png}>
             <Link className={scss['country-link']} state={{ from: location }} to={`/country/${name.official}`}>
-              <p>{name.common}</p>
+              <p className={scss['country-name']}>{name.common}</p>
             </Link>
           </li>
         ))}

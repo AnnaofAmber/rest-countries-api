@@ -6,7 +6,6 @@
 @media only screen and (min-width: 768px) {
   .container {
     padding: 80px;
-
   }
 }
 
@@ -50,6 +49,13 @@
     gap: 44px;
   }
 }
+@media only screen and (min-width: 1440px) {
+  .section-country{
+    flex-direction: row;
+    gap: 144.5px;
+    padding-top: 80px;
+  }
+}
 
 .section-country * {
   font-size: 14px;
@@ -63,6 +69,15 @@
   border-radius: 5.72px;
   box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.03);
 }
+
+@media only screen and (min-width: 1440px) {
+  .country-flag {
+    width: 560px;
+    height: 401px;
+
+  }
+}
+
 .country-name {
   margin-top: 47px;
   margin-bottom: 16px;
@@ -75,21 +90,50 @@
 @media only screen and (min-width: 768px) {
   .country-name {
     margin: 0px;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .country-name {
+    font-size: 32px;
+    margin-bottom: 23px;
   }
 }
 
 
 @media only screen and (min-width: 768px) {
   .container-info{
+
+    padding-top: 36px;
     display: flex;
     gap: 75px;
   }
 }
+
+@media only screen and (min-width: 1440px) {
+  .container-info{
+    gap: 117px;
+  }
+}
+
 .country-info-main {
   margin-bottom: 32px;
 }
+@media only screen and (min-width: 768px) {
+  .country-info-main{
+margin-bottom: 0px;
+  }
+}
+
 .country-info {
   font-weight: 300;
+}
+
+@media only screen and (min-width: 768px) {
+  .country-info {
+    font-size: 16px;
+  }
 }
 
 .dark {
