@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/react-homework-template/static/css/main.1fb7ca54.css",
-    "main.js": "/react-homework-template/static/js/main.cd1a7dc7.js",
-    "index.html": "/react-homework-template/index.html",
-    "static/media/search.svg": "/react-homework-template/static/media/search.0f7957f502f071e6df2bb6e5ed1ec91b.svg",
-    "static/media/arrowBackWhite.svg": "/react-homework-template/static/media/arrowBackWhite.e01b41f2865922e66b673024edc955a8.svg",
-    "static/media/arrowBack.svg": "/react-homework-template/static/media/arrowBack.4391f72badf9990f28f37b65afd49026.svg",
-    "main.1fb7ca54.css.map": "/react-homework-template/static/css/main.1fb7ca54.css.map",
-    "main.cd1a7dc7.js.map": "/react-homework-template/static/js/main.cd1a7dc7.js.map"
+    "main.css": "/rest-countries-api/static/css/main.1fb7ca54.css",
+    "main.js": "/rest-countries-api/static/js/main.464e4d90.js",
+    "index.html": "/rest-countries-api/index.html",
+    "static/media/search.svg": "/rest-countries-api/static/media/search.0f7957f502f071e6df2bb6e5ed1ec91b.svg",
+    "static/media/arrowBackWhite.svg": "/rest-countries-api/static/media/arrowBackWhite.e01b41f2865922e66b673024edc955a8.svg",
+    "static/media/arrowBack.svg": "/rest-countries-api/static/media/arrowBack.4391f72badf9990f28f37b65afd49026.svg",
+    "main.1fb7ca54.css.map": "/rest-countries-api/static/css/main.1fb7ca54.css.map",
+    "main.464e4d90.js.map": "/rest-countries-api/static/js/main.464e4d90.js.map"
   },
   "entrypoints": [
     "static/css/main.1fb7ca54.css",
-    "static/js/main.cd1a7dc7.js"
+    "static/js/main.464e4d90.js"
   ]
 }
