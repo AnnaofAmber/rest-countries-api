@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
 <Provider store={store}> 
 
-<BrowserRouter basename='/react-homework-template'>
+<BrowserRouter basename='/rest-countries-api/'>
 <PersistGate persistor={persistor}>
     <App />
     </PersistGate>
