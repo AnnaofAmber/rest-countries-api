@@ -31,8 +31,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/AnnaofAmber/rest-countries-api)
-- Live Site URL: [Add live site URL here](https://annaofamber.github.io/rest-countries-api/)
+- Solution URL: [Solution URL here](https://github.com/AnnaofAmber/rest-countries-api)
+- Live Site URL: [Live site URL here](https://annaofamber.github.io/rest-countries-api/)
 
 ## My process
 
