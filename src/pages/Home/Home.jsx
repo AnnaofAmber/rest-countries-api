@@ -43,11 +43,10 @@ const handlePageClick = (event) => {
     dispatch(setPagination([]))
     dispatch(setPage(event.selected))
   };
-if(pageCount <=1){
 
-    let x=window.scrollX;
-    let y=window.scrollY;
-    window.onscroll=function(){window.scrollTo(x, y);};
+if(currentItems.length <8){
+
+    window.onscroll=function(){window.scrollTo(0, 0);};
 }
 else{
   window.onscroll=function(){};
@@ -159,7 +158,7 @@ const handleSubmit = e => {
 
     return(
         <div className={clsx(scss.container, {
-          [scss.dark]:theme, [scss['container-small']]:pageCount <=1
+          [scss.dark]:theme, [scss['container-small']]:currentItems.length <8
         })}>
 <div className={scss['search-container']}>
 <SearchBar refQuery={refInput} handleSubmit={handleSubmit}/>
@@ -169,7 +168,7 @@ const handleSubmit = e => {
              <CountryList data={currentItems}/>
 <div >
 {pageCount >1 && <ReactPaginate 
-  initialPage={page}
+        initialPage={page}
         breakLabel="..."
         nextLabel="next >"
         onPageChange={handlePageClick}
@@ -187,6 +186,7 @@ const handleSubmit = e => {
         previousLinkClassName={scss['page-controlls']}
         nextLinkClassName={scss['page-controlls']}
         breakLinkClassName={scss['page-break']}
+        disabledLinkClassName={scss['page-controlls-disalbled']}
         />}
 </div>
         </div>
