@@ -45,7 +45,10 @@ const Country = () => {
         );
       } 
       finally {
-        setIsLoading(false);
+        setTimeout(()=>{
+          setIsLoading(false)},
+         500)
+    
       }
     };
     fetchByName();

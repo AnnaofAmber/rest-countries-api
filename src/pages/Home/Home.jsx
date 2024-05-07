@@ -18,7 +18,7 @@ import { setFilterByRegion } from '../../redux/filterRegionSlice';
 const Home = () => {
 
 const refInput = useRef()
-const [isLoading, setIsLoading] = useState(true);
+const [isLoading, setIsLoading] = useState(false);
 const [apiError, setApiError] = useState(false);
 const [searchParams, setSearchParams] = useSearchParams();
 const query = searchParams.get('query');
@@ -67,6 +67,7 @@ useEffect(()=>{
 if((region === null || region === 'all') && !query &&!selectedRegion){
   const fetchCountries = async() =>{
     try{
+      setIsLoading(true);
         const response = await fetchAllCountries()
             dispatch(setCountries(response))
     }
@@ -77,7 +78,9 @@ if((region === null || region === 'all') && !query &&!selectedRegion){
         );
       } 
       finally {
-        setIsLoading(false);
+          setTimeout(()=>{
+            setIsLoading(false)},
+           500)
       }
     
         }
@@ -96,6 +99,7 @@ else if(region !== null && countries.length === 0 && region!=='all'){
   // refInput.current.textContent=''
   const fetchByRegion = async()=>{
     try{
+      setIsLoading(true);
         const response = await fetchCountriesByRegion(region)
             dispatch(setCountries(response))
     }
@@ -160,11 +164,12 @@ const handleSubmit = e => {
         <div className={clsx(scss.container, {
           [scss.dark]:theme, [scss['container-small']]:currentItems.length <8
         })}>
+                      {isLoading && <Loader/>}
 <div className={scss['search-container']}>
 <SearchBar refQuery={refInput} handleSubmit={handleSubmit}/>
             <FilterBar />
 </div>
-            {isLoading && <Loader/>}
+
              <CountryList data={currentItems}/>
 <div >
 {pageCount >1 && <ReactPaginate 
