@@ -53,6 +53,6 @@ Users should be able to:
 
 ## Author
 
-- LinkedIN - [Anna Boichuk](www.linkedin.com/in/anna-boichuk-a6a050238)
+- LinkedIN - [Anna Boichuk](https://www.linkedin.com/in/anna-boichuk-a6a050238)
 - Frontend Mentor - [@AnnaofAmber](https://www.frontendmentor.io/profile/AnnaofAmber)
 - GitHub - [@AnnaofAmber](https://github.com/AnnaofAmber)
