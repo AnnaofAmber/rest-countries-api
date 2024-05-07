@@ -6,7 +6,7 @@ import { borderCountriesReducer } from './borderCountriesSlice';
 import { themeReducer } from './themeSlice';
 
 // export const store = configureStore({
-//   reducer: 
+//   reducer:
 //  {countries: countriesReducer,
 // pagination: paginationReducer,
 // filterByRegion: filterByRegionReducer,
@@ -37,11 +37,10 @@ const pageConfig = {
 };
 
 export const rootReducer = combineReducers({
-
   countries: countriesReducer,
   pagination: persistReducer(pageConfig, paginationReducer),
   filterByRegion: filterByRegionReducer,
-  borderCountries:borderCountriesReducer,
+  borderCountries: borderCountriesReducer,
   theme: persistReducer(themeConfig, themeReducer),
 });
 

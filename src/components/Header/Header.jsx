@@ -1,12 +1,16 @@
-import { useDispatch, useSelector } from 'react-redux';
 import scss from './Header.module.scss';
+import clsx from 'clsx';
+
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+
 import { setTheme } from '../../redux/themeSlice';
 import { getTheme } from '../../redux/selectors';
-import clsx from 'clsx';
+
 export const Header = () => {
   const theme = useSelector(getTheme);
   const dispatch = useDispatch();
+
   const handleThemeChange = theme => dispatch(setTheme(theme));
 
   return (
@@ -30,7 +34,7 @@ export const Header = () => {
           />
         ) : (
           <input
-          checked={false}
+            checked={false}
             className={scss['theme-input-icon']}
             type="checkbox"
             id="theme"

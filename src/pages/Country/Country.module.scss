@@ -25,14 +25,13 @@
   font-weight: 300;
   line-height: 20px;
 
-
   transition-property: transform;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.link-back:hover{
-    transform: scale(1.1);
+.link-back:hover {
+  transform: scale(1.1);
 }
 
 @media only screen and (min-width: 768px) {
@@ -50,7 +49,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .section-country{
+  .section-country {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,7 +58,7 @@
   }
 }
 @media only screen and (min-width: 1440px) {
-  .section-country{
+  .section-country {
     flex-direction: row;
     gap: 144.5px;
     padding-top: 80px;
@@ -83,7 +82,6 @@
   .country-flag {
     width: 560px;
     height: 401px;
-
   }
 }
 
@@ -110,10 +108,8 @@
   }
 }
 
-
 @media only screen and (min-width: 768px) {
-  .container-info{
-
+  .container-info {
     padding-top: 36px;
     display: flex;
     gap: 75px;
@@ -121,7 +117,7 @@
 }
 
 @media only screen and (min-width: 1440px) {
-  .container-info{
+  .container-info {
     gap: 117px;
   }
 }
@@ -130,8 +126,8 @@
   margin-bottom: 32px;
 }
 @media only screen and (min-width: 768px) {
-  .country-info-main{
-margin-bottom: 0px;
+  .country-info-main {
+    margin-bottom: 0px;
   }
 }
 

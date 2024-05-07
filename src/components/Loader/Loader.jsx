@@ -1,7 +1,6 @@
 import { ColorRing } from 'react-loader-spinner';
 import scss from '../../pages/Home/Home.module.scss';
 
-
 export const Loader = () => {
   return (
     <div className={scss.loaderWrapper}>

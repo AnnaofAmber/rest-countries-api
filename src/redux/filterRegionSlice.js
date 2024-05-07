@@ -1,21 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
-
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    filterByRegion: {
-        items: null,
-    }
-}
+  filterByRegion: {
+    items: null,
+  },
+};
 
 const filterByRegionSlice = createSlice({
-name: 'filterByRegionSlice',
-initialState:initialState.filterByRegion,
-reducers:{
-    setFilterByRegion(state, action){
-        state.items = action.payload
-    }
-}
-})
+  name: 'filterByRegionSlice',
+  initialState: initialState.filterByRegion,
+  reducers: {
+    setFilterByRegion(state, action) {
+      state.items = action.payload;
+    },
+  },
+});
 
-export const {setFilterByRegion} = filterByRegionSlice.actions;
+export const { setFilterByRegion } = filterByRegionSlice.actions;
 export const filterByRegionReducer = filterByRegionSlice.reducer;

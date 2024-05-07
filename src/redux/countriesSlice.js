@@ -1,21 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
-
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialCountriesState = {
-    countries: {
-        items: [],
-    }
-}
+  countries: {
+    items: [],
+  },
+};
 
 const countriesSlice = createSlice({
-name: 'countries',
-initialState:initialCountriesState.countries,
-reducers:{
-    setCountries(state, action){
-        state.items = action.payload
-    }
-}
-})
+  name: 'countries',
+  initialState: initialCountriesState.countries,
+  reducers: {
+    setCountries(state, action) {
+      state.items = action.payload;
+    },
+  },
+});
 
-export const {setCountries} = countriesSlice.actions;
+export const { setCountries } = countriesSlice.actions;
 export const countriesReducer = countriesSlice.reducer;

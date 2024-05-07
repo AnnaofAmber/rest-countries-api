@@ -1,32 +1,45 @@
-import { fetchCountryByName } from 'api/country-api';
-import Notiflix from 'notiflix';
-import { useEffect, useRef, useState } from 'react';
-
-import {Link, useLocation, useParams } from 'react-router-dom';
 import scss from './Country.module.scss';
+import clsx from 'clsx';
+import Notiflix from 'notiflix';
+
 import { Loader } from 'components/Loader/Loader';
-import { useDispatch, useSelector } from 'react-redux';
 import BorderCountriesList from 'components/BorderCountriesList/BorderCountriesList';
 
-import {ReactComponent as Arrow} from '../../images/icons/arrowBack.svg'
-import {ReactComponent as ArrowWhite} from '../../images/icons/arrowBackWhite.svg'
+import { ReactComponent as Arrow } from '../../images/icons/arrowBack.svg';
+import { ReactComponent as ArrowWhite } from '../../images/icons/arrowBackWhite.svg';
+
+import { fetchCountryByName } from 'api/country-api';
+
+import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { getTheme } from '../../redux/selectors';
-import clsx from 'clsx';
+
 const Country = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [apiError, setApiError] = useState(false);
+  const [countryDetails, setCountryDetails] = useState();
+
+  const dispatch = useDispatch();
+
+  const theme = useSelector(getTheme);
+
   const { name } = useParams();
   const location = useLocation();
   const backLinkHref = useRef(location.state?.from ?? '/');
-  const dispatch = useDispatch()
-  const [countryDetails, setCountryDetails] = useState();
-  const [isLoading, setIsLoading] = useState(false);
-  const [apiError, setApiError] = useState(false);
 
-  const theme = useSelector(getTheme)
   let nativeNameOfficial;
   let currencies;
   let languages = [];
-  let cioc
+  let cioc;
+
   useEffect(() => {
+    /**
+      |============================
+      | fetch for detailed info about specific country
+      |============================
+    */
     const fetchByName = async () => {
       try {
         setIsLoading(true);
@@ -43,19 +56,20 @@ const Country = () => {
         Notiflix.Notify.failure(
           `Oops! Something went wrong! Error ${apiError} Try reloading the page!`
         );
-      } 
-      finally {
-        setTimeout(()=>{
-          setIsLoading(false)},
-         500)
-    
+      } finally {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
       }
     };
     fetchByName();
-
-
-
   }, [apiError, name, cioc, dispatch]);
+
+  /**
+    |============================
+    | iterating objects in array for getting needed info
+    |============================
+  */
 
   if (countryDetails) {
     for (const key in countryDetails[0].name.nativeName) {
@@ -67,17 +81,20 @@ const Country = () => {
     for (const key in countryDetails[0].languages) {
       languages.push(countryDetails[0].languages[key]);
     }
-    if(countryDetails[0].borders){
-    cioc = countryDetails[0].borders
+    if (countryDetails[0].borders) {
+      cioc = countryDetails[0].borders;
     }
   }
 
   return (
-    <div  className={clsx(scss.container, {
-      [scss.dark]:theme
-    })}>
-
-      <Link className={scss['link-back']} to={backLinkHref.current}>{theme?<ArrowWhite/>:<Arrow/>}Back</Link>
+    <div
+      className={clsx(scss.container, {
+        [scss.dark]: theme,
+      })}
+    >
+      <Link className={scss['link-back']} to={backLinkHref.current}>
+        {theme ? <ArrowWhite /> : <Arrow />}Back
+      </Link>
       {isLoading && <Loader />}
       {countryDetails && (
         <div key={name}>
@@ -90,67 +107,71 @@ const Country = () => {
                   alt={flags.alt}
                 />
                 <div>
-                <h2 className={scss['country-name']}>{name.common}</h2>
-                <div className={scss['container-info']}>
-                <div className={scss['country-info-main']}>
-                  <p>
-                    Native Name:{' '}
-                    <span className={scss['country-info']}>
-                      {nativeNameOfficial}
-                    </span>{' '}
-                  </p>
-                  <p>
-                    Population:{' '}
-                    <span className={scss['country-info']}>
-                      {population.toLocaleString('en-En')}
-                    </span>
-                  </p>
-                  <p>
-                    Region:{' '}
-                    <span className={scss['country-info']}>{region}</span>{' '}
-                  </p>
-                  <p>
-                    Sub Region:{' '}
-                    <span className={scss['country-info']}>{subregion}</span>
-                  </p>
-                  {capital ? (
-                    <p>
-                      Capital:{' '}
-                      <span className={scss['country-info']}>{capital}</span>
-                    </p>
-                  ) : (
-                    <p>
-                      Capital:{' '}
-                      <span className={scss['country-info']}>None</span>
-                    </p>
-                  )}
+                  <h2 className={scss['country-name']}>{name.common}</h2>
+                  <div className={scss['container-info']}>
+                    <div className={scss['country-info-main']}>
+                      <p>
+                        Native Name:{' '}
+                        <span className={scss['country-info']}>
+                          {nativeNameOfficial}
+                        </span>{' '}
+                      </p>
+                      <p>
+                        Population:{' '}
+                        <span className={scss['country-info']}>
+                          {population.toLocaleString('en-En')}
+                        </span>
+                      </p>
+                      <p>
+                        Region:{' '}
+                        <span className={scss['country-info']}>{region}</span>{' '}
+                      </p>
+                      <p>
+                        Sub Region:{' '}
+                        <span className={scss['country-info']}>
+                          {subregion}
+                        </span>
+                      </p>
+                      {capital ? (
+                        <p>
+                          Capital:{' '}
+                          <span className={scss['country-info']}>
+                            {capital}
+                          </span>
+                        </p>
+                      ) : (
+                        <p>
+                          Capital:{' '}
+                          <span className={scss['country-info']}>None</span>
+                        </p>
+                      )}
+                    </div>
+                    <div>
+                      <p>
+                        Top Level Domain:{' '}
+                        <span className={scss['country-info']}>{tld}</span>
+                      </p>
+                      <p>
+                        Currencies:{' '}
+                        <span className={scss['country-info']}>
+                          {currencies}
+                        </span>
+                      </p>
+                      <p>
+                        Languages:{' '}
+                        <span className={scss['country-info']}>
+                          {languages.join(', ')}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  {cioc && <BorderCountriesList cioc={cioc} />}
                 </div>
-                <div>
-                  <p>
-                    Top Level Domain:{' '}
-                    <span className={scss['country-info']}>{tld}</span>
-                  </p>
-                  <p>
-                    Currencies:{' '}
-                    <span className={scss['country-info']}>{currencies}</span>
-                  </p>
-                  <p>
-                    Languages:{' '}
-                    <span className={scss['country-info']}>
-                      {languages.join(', ')}
-                    </span>
-                  </p>
-                </div>
-                </div>
-                {cioc && <BorderCountriesList cioc = {cioc}/>}
-                </div>
-                
               </section>
             )
           )}
         </div>
       )}
-      
     </div>
   );
 };

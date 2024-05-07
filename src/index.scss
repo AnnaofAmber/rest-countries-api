@@ -10,26 +10,27 @@ body {
 }
 a {
   text-decoration: none;
-  color: rgb(17, 21, 23);;
+  color: rgb(17, 21, 23);
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-p{
+p {
   margin: 0;
 }
-ul{
+ul {
   list-style: none;
   padding: 0px;
   margin: 0px;
-
 }
-h1,h2,h3{
+h1,
+h2,
+h3 {
   margin: 0;
 }
 
-.page-container{
+.page-container {
   margin: 0;
   display: flex;
   gap: 10px;

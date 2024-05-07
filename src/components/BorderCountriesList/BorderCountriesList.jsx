@@ -1,22 +1,33 @@
-import { useEffect, useState } from 'react';
 import scss from './BorderCountriesList.module.scss';
+
+import Notiflix from 'notiflix';
+import clsx from 'clsx';
+
+import { Link } from 'react-router-dom';
+import { Loader } from 'components/Loader/Loader';
+
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { getBorderCountries, getTheme } from '../../redux/selectors';
 import { setBorderCountries } from '../../redux/borderCountriesSlice';
 import { fetchCountryByCioc } from 'api/country-api';
-import Notiflix from 'notiflix';
-import { Link } from 'react-router-dom';
-import { Loader } from 'components/Loader/Loader';
-import clsx from 'clsx';
 
 const BorderCountriesList = ({ cioc, location }) => {
-  const borderCountries = useSelector(getBorderCountries);
-  const theme = useSelector(getTheme);
   const [isLoading, setIsLoading] = useState(false);
   const [apiError, setApiError] = useState(false);
+
   const dispatch = useDispatch();
 
+  const borderCountries = useSelector(getBorderCountries);
+  const theme = useSelector(getTheme);
+
   useEffect(() => {
+    /**
+      |============================
+      | fetch for border countries
+      |============================
+    */
     const fetchByCioc = async () => {
       try {
         setIsLoading(true);
@@ -37,17 +48,22 @@ const BorderCountriesList = ({ cioc, location }) => {
   }, [apiError, cioc, dispatch]);
 
   return (
-    <div
-      className={scss['container-border-countries']}
-    >
+    <div className={scss['container-border-countries']}>
       {isLoading && <Loader />}
       <p className={scss.title}>Border Countries: </p>
       <ul className={scss['list-border-countries']}>
         {borderCountries.map(({ name, flags }) => (
-          <li className={clsx(scss.country,{
-          [scss.dark]:theme
-          })} key={flags.png}>
-            <Link className={scss['country-link']} state={{ from: location }} to={`/country/${name.official}`}>
+          <li
+            className={clsx(scss.country, {
+              [scss.dark]: theme,
+            })}
+            key={flags.png}
+          >
+            <Link
+              className={scss['country-link']}
+              state={{ from: location }}
+              to={`/country/${name.official}`}
+            >
               <p className={scss['country-name']}>{name.common}</p>
             </Link>
           </li>

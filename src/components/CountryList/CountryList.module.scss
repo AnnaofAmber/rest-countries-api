@@ -1,13 +1,13 @@
-.list{
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 40px;
-padding-top: 32px;
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding-top: 32px;
 }
 
 @media only screen and (min-width: 768px) {
-   .list{
+  .list {
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
@@ -17,76 +17,71 @@ padding-top: 32px;
   }
 }
 
-.item{
-    max-width: 264px;
-    max-height: 336px;
-    border-radius: 5px;
-box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.03);
+.item {
+  max-width: 264px;
+  max-height: 336px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.03);
 
-overflow: hidden;
+  overflow: hidden;
 
-
-transition-property: transform;
-transition-duration: 250ms;
-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
-.item:hover{
-    box-shadow: 0px 7px 12px 0px rgba(0, 0, 0, 0.59);
-    transform: scale(1.1);
+.item:hover {
+  box-shadow: 0px 7px 12px 0px rgba(0, 0, 0, 0.59);
+  transform: scale(1.1);
 }
 
-.item:focus{
-    box-shadow: 0px 7px 12px 0px rgba(0, 0, 0, 0.59);
-    transform: scale(1.1);
+.item:focus {
+  box-shadow: 0px 7px 12px 0px rgba(0, 0, 0, 0.59);
+  transform: scale(1.1);
 }
 
-.flag{
-    display: block;
-    width: 267px;
-    height: 160px;
+.flag {
+  display: block;
+  width: 267px;
+  height: 160px;
 }
-.info-container{
-    padding: 24px 10px 46px 24px;
-    background: rgb(255, 255, 255);
-   
+.info-container {
+  padding: 24px 10px 46px 24px;
+  background: rgb(255, 255, 255);
 }
-.name{
-font-size: 18px;
-font-weight: 800;
-line-height: 26px;
-letter-spacing: 0px;
-margin-bottom: 16px;
+.name {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 26px;
+  letter-spacing: 0px;
+  margin-bottom: 16px;
 
-height: 26px;
-overflow:scroll;
+  height: 26px;
+  overflow: scroll;
 }
-.info{
-
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 16px;
+.info {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
 }
 
-.details{
-
-    font-size: 14px;
-    font-weight: 200;
-    line-height: 16px;
+.details {
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 16px;
 }
 
-.info:not(:last-child){
-    margin-bottom: 8px;
+.info:not(:last-child) {
+  margin-bottom: 8px;
 }
 
-.dark{
-    & .info-container{
-        box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.03);
-        background: rgb(43, 56, 68);
-        color: rgb(255, 255, 255);
-    }
-    .details{
-        color: rgb(255, 255, 255);
-    }
+.dark {
+  & .info-container {
+    box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.03);
+    background: rgb(43, 56, 68);
+    color: rgb(255, 255, 255);
+  }
+  .details {
+    color: rgb(255, 255, 255);
+  }
 }
