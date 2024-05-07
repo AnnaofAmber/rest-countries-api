@@ -29,6 +29,7 @@ export const FilterBar = () =>{
   <button
     className={scss["select-button"]}
     role="combobox"
+    aria-label='select'
     aria-labelledby="select button"
     aria-haspopup="listbox"
     aria-expanded="false"

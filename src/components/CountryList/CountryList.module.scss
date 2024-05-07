@@ -22,6 +22,7 @@ padding-top: 32px;
     max-height: 336px;
     border-radius: 5px;
 box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.03);
+
 overflow: hidden;
 
 
@@ -47,7 +48,7 @@ transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     height: 160px;
 }
 .info-container{
-    padding: 24px 0px 46px 24px;
+    padding: 24px 10px 46px 24px;
     background: rgb(255, 255, 255);
    
 }
@@ -59,7 +60,7 @@ letter-spacing: 0px;
 margin-bottom: 16px;
 
 height: 26px;
-overflow:auto;
+overflow:scroll;
 }
 .info{
 

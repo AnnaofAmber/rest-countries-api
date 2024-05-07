@@ -10,7 +10,7 @@ export const SearchBar = ({handleSubmit, refQuery}) => {
         [scss.dark]:theme
        } )} onSubmit={handleSubmit}>
         <label htmlFor="country-name"></label>
-        <button className={scss['btn-search']} type='submit'><Search/></button>
+        <button aria-label='search' className={scss['btn-search']} type='submit'><Search/></button>
         <input ref={refQuery} className={scss.input} id='country-name' name='searchCountryName' type="text" placeholder='Search for a country...' />
        </form>
     )
