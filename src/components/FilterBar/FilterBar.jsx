@@ -5,6 +5,7 @@ import { setCountries } from '../../redux/countriesSlice';
 import { useState } from 'react';
 import clsx from 'clsx';
 import { getTheme } from '../../redux/selectors';
+import { setPage } from '../../redux/paginationSlice';
 
 
 
@@ -16,6 +17,7 @@ export const FilterBar = () =>{
     const handleChange = (event) => {
         dispatch(setFilterByRegion(event.target.value))
         dispatch(setCountries([]))
+        dispatch(setPage(0))
         setSelectIsOpen(false)
     };
     const hadnleClick = selectStatus => setSelectIsOpen(selectStatus)

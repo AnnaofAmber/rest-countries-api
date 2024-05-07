@@ -70,7 +70,6 @@ else if(region !== null && countries.length === 0 && region!=='all'){
     try{
         const response = await fetchCountriesByRegion(region)
             dispatch(setCountries(response))
-            
     }
     catch (error) {
         setApiError(true);
@@ -131,7 +130,7 @@ const handleSubmit = e => {
             {isLoading && <Loader/>}
              <CountryList data={currentItems}/>
 <div >
-{pageCount>=8 && <ReactPaginate 
+{pageCount >1 && <ReactPaginate 
   initialPage={page}
         breakLabel="..."
         nextLabel="next >"

@@ -19,6 +19,13 @@
   color: #111517;
 }
 
+.title:hover{
+  color: #1115177f;
+}
+.title:focus{
+  color: #1115177f;
+}
+
 @media only screen and (min-width: 768px) {
   .title {
     font-size: 24px;
@@ -29,6 +36,11 @@
   display: flex;
   gap: 8px;
   align-items: center;
+
+  cursor: pointer;
+  transition-property: transform;
+transition-duration: 250ms;
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .theme {
@@ -36,7 +48,13 @@
   font-weight: 400;
   line-height: 16px;
   letter-spacing: 0px;
+
 }
+
+.theme-container:hover{
+  transform: scale(1.1);
+}
+
 
 @media only screen and (min-width: 768px) {
   .theme {
@@ -72,6 +90,12 @@
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.06);
     background: rgb(43, 56, 68);
     color: rgb(255, 255, 255);
+  }
+  .title:hover{
+    color: #bbb9b9;
+  }
+  .title:focus{
+    color: #bbb9b9;
   }
 
   .title {

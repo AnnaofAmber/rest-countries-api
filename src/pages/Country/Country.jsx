@@ -139,7 +139,7 @@ const Country = () => {
                   </p>
                 </div>
                 </div>
-                <BorderCountriesList cioc = {cioc}/>
+                {cioc && <BorderCountriesList cioc = {cioc}/>}
                 </div>
                 
               </section>
