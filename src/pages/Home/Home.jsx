@@ -13,6 +13,7 @@ import { Loader } from 'components/Loader/Loader';
 import { FilterBar } from 'components/FilterBar/FilterBar';
 import { useSearchParams } from 'react-router-dom';
 import clsx from 'clsx';
+import { setFilterByRegion } from '../../redux/filterRegionSlice';
 
 const Home = () => {
 
@@ -21,6 +22,7 @@ const [isLoading, setIsLoading] = useState(true);
 const [apiError, setApiError] = useState(false);
 const [searchParams, setSearchParams] = useSearchParams();
 const query = searchParams.get('query');
+const selectedRegion = searchParams.get('r')
 
 const dispatch = useDispatch()
 const countries = useSelector(getCountries)
@@ -41,9 +43,29 @@ const handlePageClick = (event) => {
     dispatch(setPagination([]))
     dispatch(setPage(event.selected))
   };
+if(pageCount <=1){
+
+    let x=window.scrollX;
+    let y=window.scrollY;
+    window.onscroll=function(){window.scrollTo(x, y);};
+}
+else{
+  window.onscroll=function(){};
+}
 
 useEffect(()=>{
-if((region === null || region === 'all') && !query ){
+
+  /**
+    |============================
+    | fetch for all countries without conditions 
+    |============================
+  */
+
+    if(selectedRegion === region){
+      dispatch(setFilterByRegion(null))
+       }
+
+if((region === null || region === 'all') && !query &&!selectedRegion){
   const fetchCountries = async() =>{
     try{
         const response = await fetchAllCountries()
@@ -61,11 +83,18 @@ if((region === null || region === 'all') && !query ){
     
         }
         fetchCountries()
+
     
 }
+
+/**
+  |============================
+  | fetch for countries by region
+  |============================
+*/
 else if(region !== null && countries.length === 0 && region!=='all'){
-  setSearchParams({ query: '' });
-  refInput.current.textContent=''
+  setSearchParams({ r: region});
+  // refInput.current.textContent=''
   const fetchByRegion = async()=>{
     try{
         const response = await fetchCountriesByRegion(region)
@@ -84,7 +113,13 @@ else if(region !== null && countries.length === 0 && region!=='all'){
  
   fetchByRegion()
 }
-else if(query){
+
+/**
+  |============================
+  | fetch for countries using search
+  |============================
+*/
+else if(query ){
 const fetchByName = async () => {
   try {
     setIsLoading(true);
@@ -108,7 +143,9 @@ const fetchByName = async () => {
 }
 fetchByName()
 }
-}, [apiError, countries.length, dispatch, query, region, setSearchParams])
+
+}, [apiError, countries.length, dispatch, query, region, setSearchParams, selectedRegion])
+
 const handleSubmit = e => {
   e.preventDefault();
   const searchValue = e.currentTarget.elements.searchCountryName.value;
@@ -117,11 +154,12 @@ const handleSubmit = e => {
     }
   setSearchParams({ query: searchValue });
   setItemOffset(0)
+  dispatch(setFilterByRegion(null))
 };
 
     return(
         <div className={clsx(scss.container, {
-          [scss.dark]:theme
+          [scss.dark]:theme, [scss['container-small']]:pageCount <=1
         })}>
 <div className={scss['search-container']}>
 <SearchBar refQuery={refInput} handleSubmit={handleSubmit}/>

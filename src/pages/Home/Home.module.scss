@@ -9,6 +9,13 @@
   }
 }
 
+.container-small{
+  &.container{
+    height: 100vh;
+
+  }
+}
+
 .page-container {
   padding-top: 32px;
   display: flex;
